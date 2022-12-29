@@ -1,18 +1,28 @@
 import Head from 'next/head';
-import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
+import utilStyles from '../styles/utils.module.css';
+import Layout, { siteTitle } from '../components/layout';
+import { getSortedPostsData } from '../lib/posts';
 import Date from '../components/date';
 
-// export async function getServerSideProps(context) {
-//   return {
-//     props: {
-//       // props for your component
-//     },
-//   };
-// }
+/**
+ * Server-Side Rendering
+ * @param context
+ * @returns {Promise<{props: {}}>}
 
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      // props for your component
+    },
+  };
+}
+ */
+
+/**
+ * Static Site Generation
+ * @returns {Promise<{props: {allPostsData}}>}
+ */
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
   return {
@@ -31,10 +41,7 @@ export default function Home({ allPostsData }) {
 
       <section className={utilStyles.headingMd}>
         <p>John</p>
-        <p>
-          Lorem ipsum... .... ...
-          <a href='https://nextjs.org/learn'>our Next.js tutorial</a>.)
-        </p>
+        <p>Next.js Learning project</p>
       </section>
 
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>

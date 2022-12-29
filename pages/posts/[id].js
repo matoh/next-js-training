@@ -4,6 +4,10 @@ import Head from 'next/head';
 import Date from '../../components/date';
 import utilStyles from '../../styles/utils.module.css';
 
+/**
+ * Server-Side Rendering
+ * @returns {Promise<{paths, fallback: boolean}>}
+ */
 export async function getStaticPaths() {
   const paths = getAllPostIds();
   return {
@@ -12,6 +16,11 @@ export async function getStaticPaths() {
   };
 }
 
+/**
+ * Static Site Generation
+ * @param params
+ * @returns {Promise<{props: {postData: {[p: string]: any, id: *, contentHtml: string}}}>}
+ */
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id);
   return {
